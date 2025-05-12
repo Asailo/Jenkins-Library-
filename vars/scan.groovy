@@ -5,7 +5,7 @@ def call(String imageName) {
     withCredentials([string(credentialsId: 'snyk-api-token', variable: 'SNYK_TOKEN')]) {
         sh """
             snyk config set api=$SNYK_TOKEN
-            snyk container test ${tag} --file=resource/common/Dockerfile
+            snyk container test ${tag}
         """
     }
 
