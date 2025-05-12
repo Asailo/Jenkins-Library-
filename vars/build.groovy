@@ -1,10 +1,8 @@
+// inside vars/build.groovy in Jenkins shared lib
 def call(String imageName) {
-    def tag = "${imageName}:${env.BUILD_NUMBER}"
-    echo "Building Docker image: ${tag}"
+    // Copy Dockerfile into current workspace
+    sh 'cp $JENKINS_HOME/workspace/@libs/Jenkins-Library/resource/common/Dockerfile ./Dockerfile'
 
-    sh """
-        docker build -t ${tag} -f resource/common/Dockerfile .
-    """
-
-    echo "Docker image built successfully: ${tag}"
+    // Build Docker image
+    sh "docker build -t ${imageName}:${env.BUILD_NUMBER} -f Dockerfile ."
 }
