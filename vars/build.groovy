@@ -3,7 +3,7 @@ def call(String imageName) {
     echo "Building Docker image: ${tag}"
 
     sh """
-        docker build -t ${tag} -f resource/common/Dockerfile .
+        docker build -t ${tag} .
     """
 
     echo "Docker image built successfully: ${tag}"
