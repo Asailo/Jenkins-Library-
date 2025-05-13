@@ -12,8 +12,8 @@ def call(String imageName) {
                 sh """
                     ssh -o StrictHostKeyChecking=no ${Remote_User}@${Remote_Host} '
                         docker pull ${tag} &&
-                        docker-compose -f resource/common/docker-compose.yml down || true &&
-                        docker-compose -f resource/common/docker-compose.yml up -d
+                        docker compose docker-compose.yaml down || true &&
+                        docker compose dokcer-compose.yaml up -d
                     '
                 """
             }
