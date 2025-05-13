@@ -1,4 +1,5 @@
-def call(String remoteHost, String remoteUser, String sshCredsId) {
+def call(String imageName) {
+    def tag = "${imageName}:${env.TAG}"
     echo "Cleaning up Docker containers and images on Remote VM..."
 
     sshagent (credentials: [sshCredsId]) {
