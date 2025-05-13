@@ -1,5 +1,5 @@
 def call(String imageName) {
-    def tag = "${imageName}:${env.BUILD_NUMBER}"
+    def tag = "${imageName}:${env.TAG}"
     echo "Scanning Docker image for vulnerabilities: ${tag}"
 
     withCredentials([string(credentialsId: 'snyk-api-token', variable: 'SNYK_TOKEN')]) {
