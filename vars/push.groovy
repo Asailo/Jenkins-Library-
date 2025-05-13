@@ -5,10 +5,8 @@ def call(String imageName) {
 
     withCredentials([usernamePassword(credentialsId: 'docker-hub-jenkins', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
         sh """
-            set -ex
             echo \$DOCKER_PASS | docker login -u \$DOCKER_USER --password-stdin
             docker push ${tag}
-            docker logout
         """
     }
 
