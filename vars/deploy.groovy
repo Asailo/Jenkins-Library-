@@ -11,9 +11,9 @@ def call(String imageName) {
             sshagent (credentials: ['ssh-vm-creds-id']) {
                 sh """
                     ssh -o StrictHostKeyChecking=no ${Remote_User}@${Remote_Host} '
-                        docker compose docker-compose.yaml down || true &&
-                        docker compose docker-compose.yaml build &&
-                        docker compose dokcer-compose.yaml up -d
+                        docker compose -f docker-compose.yaml down || true &&
+                        docker compose -f docker-compose.yaml build &&
+                        docker compose -f docker-compose.yaml up -d
 
                     '
                 """
