@@ -4,7 +4,7 @@ def call(String imageName) {
 
     sshagent (credentials: ['ssh-vm-creds-id']) {
         sh """
-            ssh -o StrictHostKeyChecking=no ${VM_USER}@${VM_HOST} '
+            ssh -o StrictHostKeyChecking=no ${Remote_User}@${Remote_Host} '
                 docker pull ${tag} &&
                 docker-compose -f resource/common/docker-compose.yml down || true &&
                 docker-compose -f resource/common/docker-compose.yml up -d
