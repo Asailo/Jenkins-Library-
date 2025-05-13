@@ -7,8 +7,6 @@ def call(String imageName) {
         docker build -t ${tag} .
     """
 
-    // Verify if the image exists locally
-    sh "docker images | grep ${tag}"
 
     echo "Docker image built successfully: ${tag}"
 }
