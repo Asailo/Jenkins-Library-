@@ -1,5 +1,5 @@
 def call(String imageName) {
-    def tag = "${imageName}:${env.BUILD_NUMBER}"
+    def tag = "${imageName}:${env.TAG}"
     echo "Deploying Docker image: ${tag} to VM"
 
     sshagent (credentials: ['ssh-vm-creds-id']) {
