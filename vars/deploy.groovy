@@ -1,5 +1,11 @@
+
 def call(String imageName) {
     def tag = "${imageName}:${env.TAG}"
+
+    withCredentials([
+        string(credentialsId: 'vm-host', variable: 'VM_HOST'),
+        string(credentialsId: 'vm-user', variable: 'VM_USER')
+        
     echo "Deploying Docker image: ${tag} to VM"
 
     sshagent (credentials: ['ssh-vm-creds-id']) {
@@ -14,4 +20,3 @@ def call(String imageName) {
 
     echo "Docker image deployed successfully to the VM: ${tag}"
 }
-
