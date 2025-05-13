@@ -3,8 +3,8 @@ def call(String imageName) {
 
     echo "Preparing to push Docker image: ${tag}"
 
-    // Ensure the image exists in the local registry
-    sh 'docker images'
+    // Verify the tag
+    sh "docker images | grep ${tag}"
 
     withCredentials([usernamePassword(credentialsId: 'dockerhub-creds-id', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
         sh """
