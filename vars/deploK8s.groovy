@@ -1,4 +1,4 @@
-def call(String kubeconfigPath = "${env.WORKSPACE}/admin.conf", String k8sDir = "k8s") {
+def call(String imageName) {
     withCredentials([file(credentialsId: 'kubeconfig-prod', variable: 'KUBECONFIG_FILE')]) {
         sh """
             echo '[INFO] Copying kubeconfig to workspace'
