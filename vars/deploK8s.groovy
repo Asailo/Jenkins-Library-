@@ -5,8 +5,8 @@ def call(String imageName) {
             cp \$KUBECONFIG_FILE ./kubeconfig-prod.yaml
             export KUBECONFIG=./kubeconfig-prod.yaml
             echo '[INFO] Applying Kubernetes deployment and service files'
-            kubectl apply -f ${k8sDir}/deployment.yaml
-            kubectl apply -f ${k8sDir}/service.yaml
+            kubectl apply -f k8s/deployment.yaml
+            kubectl apply -f k8s/service.yaml
         """
     }
 }
